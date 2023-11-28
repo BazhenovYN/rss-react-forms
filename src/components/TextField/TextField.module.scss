@@ -1,0 +1,25 @@
+@import '@/styles/variables';
+
+.input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid $default-border-color;
+  border-radius: 6px;
+
+  &:focus {
+    border-color: $primary-box-shadow;
+    outline: none;
+  }
+}
+
+.text-field {
+  display: flex;
+  flex-direction: column;
+  width: min-content;
+  margin: 12px;
+}
+
+.error-message {
+  font-size: 0.8em;
+  color: $warning-color;
+}
