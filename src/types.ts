@@ -10,8 +10,10 @@ export interface IForm {
   name: string;
   age: number;
   email: string;
-  passwords: string;
+  password: string;
+  confirmPassword: string;
   gender: Gender;
   avatar: string;
   country: string;
+  isAgree: boolean;
 }
