@@ -1,4 +1,4 @@
-export type Gender = 'male' | 'female' | 'other';
+export type Gender = 'Male' | 'Female' | 'Other';
 
 export interface ICountryType {
   code: string;
@@ -13,7 +13,17 @@ export interface IForm {
   password: string;
   confirmPassword: string;
   gender: Gender;
-  avatar: string;
+  avatar: File;
   country: string;
   isAgree: boolean;
+}
+
+export interface IStoreData {
+  name: string;
+  age: number;
+  email: string;
+  password: string;
+  gender: Gender;
+  avatar: string;
+  country: string;
 }

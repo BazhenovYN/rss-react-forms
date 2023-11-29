@@ -1,11 +1,13 @@
 import { FormEvent, useState } from 'react';
 import { ValidationError } from 'yup';
-import { schema } from '@/constants/validateSchema';
+import { useAppDispatch } from '@/app/store';
+import { GENDER } from '@/constants/common';
 import Button from '@/components/Button';
 import Checkbox from '@/components/Checkbox';
+import Select from '@/components/Select';
 import TextField from '@/components/TextField';
 import { setSimpleFormData } from '@/store/simpleFormSlice';
-import { useAppDispatch } from '@/app/store';
+import { getStoredDataWithValidation } from '@/utils/converter';
 
 function SimpleForm() {
   const dispatch = useAppDispatch();
@@ -15,13 +17,10 @@ function SimpleForm() {
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData.entries());
     setErrors({});
     try {
-      const validatedResult = await schema.validate(data, {
-        abortEarly: false,
-      });
-      dispatch(setSimpleFormData(validatedResult));
+      const storedData = await getStoredDataWithValidation(formData);
+      dispatch(setSimpleFormData(storedData));
     } catch (error) {
       if (error instanceof ValidationError) {
         error.inner.map(({ path, message }) => {
@@ -47,7 +46,7 @@ function SimpleForm() {
         <TextField label="Name" {...register('name')} />
         <TextField label="Age" type="number" min={0} {...register('age')} />
         <TextField label="Email" type="email" {...register('email')} />
-        <TextField label="Gender" {...register('gender')} />
+        <Select label="Gender" items={GENDER} {...register('gender')} />
         <TextField label="Country" {...register('country')} />
         <TextField label="Avatar" type="file" {...register('avatar')} />
         <TextField label="Password" type="password" {...register('password')} />

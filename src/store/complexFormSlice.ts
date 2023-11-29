@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/app/store';
-import { IForm } from '@/types';
+import { IStoreData } from '@/types';
 
 export interface IFormState {
-  formData: IForm | null;
+  formData: IStoreData | null;
 }
 
 const initialState: IFormState = {
@@ -14,7 +14,7 @@ export const complexFormSlice = createSlice({
   name: 'complexForm',
   initialState,
   reducers: {
-    setComplexFormData: (state, action: PayloadAction<IForm>) => {
+    setComplexFormData: (state, action: PayloadAction<IStoreData>) => {
       state.formData = action.payload;
     },
   },
