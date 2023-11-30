@@ -4,10 +4,13 @@ import { useAppDispatch } from '@/app/store';
 import { GENDER } from '@/constants/common';
 import Button from '@/components/Button';
 import Checkbox from '@/components/Checkbox';
-import Select from '@/components/Select';
+import CountrySelect from '@/components/CountrySelect';
 import TextField from '@/components/TextField';
 import { setSimpleFormData } from '@/store/simpleFormSlice';
 import { getStoredDataWithValidation } from '@/utils/converter';
+import Autocomplete from '@/components/Autocomplete';
+
+import styles from './SimpleForm.module.scss';
 
 function SimpleForm() {
   const dispatch = useAppDispatch();
@@ -23,6 +26,7 @@ function SimpleForm() {
       dispatch(setSimpleFormData(storedData));
     } catch (error) {
       if (error instanceof ValidationError) {
+        console.log(error.inner);
         error.inner.map(({ path, message }) => {
           path && setErrors((prev) => ({ ...prev, [path]: message }));
         });
@@ -42,12 +46,12 @@ function SimpleForm() {
   return (
     <>
       <h1>Simple Form</h1>
-      <form onSubmit={handleSubmit} noValidate>
+      <form onSubmit={handleSubmit} className={styles.form} noValidate>
         <TextField label="Name" {...register('name')} />
         <TextField label="Age" type="number" min={0} {...register('age')} />
         <TextField label="Email" type="email" {...register('email')} />
-        <Select label="Gender" items={GENDER} {...register('gender')} />
-        <TextField label="Country" {...register('country')} />
+        <Autocomplete label="Gender" options={GENDER} {...register('gender')} />
+        <CountrySelect label="Country" {...register('country')} />
         <TextField label="Avatar" type="file" {...register('avatar')} />
         <TextField label="Password" type="password" {...register('password')} />
         <TextField
@@ -59,7 +63,9 @@ function SimpleForm() {
           label="I agree to Terms & Conditions"
           {...register('isAgree')}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className={styles.submit}>
+          Submit
+        </Button>
       </form>
     </>
   );

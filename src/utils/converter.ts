@@ -21,6 +21,7 @@ export async function getStoredDataWithValidation(
   formData: FormData
 ): Promise<IStoreData> {
   const data = Object.fromEntries(formData.entries());
+  console.log(data);
   const validatedResult = await schema.validate(data, {
     abortEarly: false,
   });

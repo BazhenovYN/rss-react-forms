@@ -1,8 +1,9 @@
 @import '@/styles/variables';
 
 .input {
+  width: 100%;
   padding: 12px;
-  font-size: 16px;
+  margin-top: 4px;
   border: 1px solid $default-border-color;
   border-radius: 6px;
 
@@ -15,8 +16,7 @@
 .text-field {
   display: flex;
   flex-direction: column;
-  width: min-content;
-  margin: 12px;
+  margin: 12px 0;
 }
 
 .error-message {
