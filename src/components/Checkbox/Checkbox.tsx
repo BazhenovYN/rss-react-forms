@@ -7,18 +7,12 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 };
 
 const Checkbox = forwardRef<HTMLInputElement, Props>(
-  ({ className, label, errorText, ...rest }, ref) => {
-    const classes = [styles.input, className].join(' ').trimEnd();
+  ({ label, errorText, ...rest }, ref) => {
     return (
-      <div className={styles['text-field']}>
-        <label>
-          <input
-            type="checkbox"
-            ref={ref}
-            className={classes}
-            value={'true'}
-            {...rest}
-          />
+      <div className={styles['checkbox']}>
+        <label className={styles.container}>
+          <input type="checkbox" ref={ref} value={'true'} {...rest} />
+          <span className={styles.checkmark} />
           {label}
         </label>
         {errorText && (
