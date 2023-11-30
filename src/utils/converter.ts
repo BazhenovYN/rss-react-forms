@@ -1,5 +1,5 @@
 import { schema } from '@/constants/validateSchema';
-import { IStoreData } from '@/types';
+import { IFormData } from '@/types';
 
 function fileToBase64(file: File) {
   return new Promise<string>((resolve, reject) => {
@@ -19,7 +19,7 @@ function fileToBase64(file: File) {
 
 export async function getStoredDataWithValidation(
   formData: FormData
-): Promise<IStoreData> {
+): Promise<IFormData> {
   const data = Object.fromEntries(formData.entries());
   console.log(data);
   const validatedResult = await schema.validate(data, {

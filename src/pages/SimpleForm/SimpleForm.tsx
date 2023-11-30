@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import Checkbox from '@/components/Checkbox';
 import CountrySelect from '@/components/CountrySelect';
 import TextField from '@/components/TextField';
-import { setSimpleFormData } from '@/store/simpleFormSlice';
+import { saveSimpleFormData } from '@/store/historySlice';
 import { getStoredDataWithValidation } from '@/utils/converter';
 import Autocomplete from '@/components/Autocomplete';
 
@@ -23,7 +23,7 @@ function SimpleForm() {
     setErrors({});
     try {
       const storedData = await getStoredDataWithValidation(formData);
-      dispatch(setSimpleFormData(storedData));
+      dispatch(saveSimpleFormData(storedData));
     } catch (error) {
       if (error instanceof ValidationError) {
         console.log(error.inner);

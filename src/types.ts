@@ -18,7 +18,7 @@ export interface IForm {
   isAgree: boolean;
 }
 
-export interface IStoreData {
+export interface IFormData {
   name: string;
   age: number;
   email: string;

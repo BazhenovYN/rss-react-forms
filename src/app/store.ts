@@ -1,13 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import complexFormSlice from '@/store/complexFormSlice';
 import countriesReducer from '@/store/countriesSlice';
-import simpleFormReducer from '@/store/simpleFormSlice';
+import historyReducer from '@/store/historySlice';
 
 export const store = configureStore({
   reducer: {
-    simpleForm: simpleFormReducer,
-    complexForm: complexFormSlice,
+    history: historyReducer,
     countries: countriesReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
