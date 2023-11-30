@@ -21,6 +21,7 @@
     "*.{js,jsx,ts,tsx,json}": "eslint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.2",
     "@reduxjs/toolkit": "^1.9.7",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
