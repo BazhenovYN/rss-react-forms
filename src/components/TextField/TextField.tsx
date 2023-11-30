@@ -8,15 +8,15 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 
 const TextField = forwardRef<HTMLInputElement, Props>(
   ({ className, label, errorText, ...rest }, ref) => {
-    const classes = [styles.input, className].join(' ').trimEnd();
+    const classes = [styles.input, className, errorText ? styles.error : '']
+      .join(' ')
+      .trimEnd();
     return (
       <div className={styles['text-field']}>
         <label>
           {label} <input ref={ref} className={classes} {...rest} />
         </label>
-        {errorText && (
-          <div className={styles['error-message']}>{errorText}</div>
-        )}
+        <div className={styles['error-message']}>{errorText}</div>
       </div>
     );
   }

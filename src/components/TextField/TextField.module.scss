@@ -7,6 +7,10 @@
   border: 1px solid $default-border-color;
   border-radius: 6px;
 
+  &.error {
+    border-color: $warning-color;
+  }
+
   &:focus {
     border-color: $primary-box-shadow;
     outline: none;
@@ -16,10 +20,11 @@
 .text-field {
   display: flex;
   flex-direction: column;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .error-message {
+  min-height: 16px;
   font-size: 0.8em;
   color: $warning-color;
 }

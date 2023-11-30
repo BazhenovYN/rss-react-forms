@@ -15,9 +15,7 @@ const Checkbox = forwardRef<HTMLInputElement, Props>(
           <span className={styles.checkmark} />
           {label}
         </label>
-        {errorText && (
-          <div className={styles['error-message']}>{errorText}</div>
-        )}
+        <div className={styles['error-message']}>{errorText}</div>
       </div>
     );
   }

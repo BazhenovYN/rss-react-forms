@@ -2,7 +2,7 @@
 
 .autocomplete {
   position: relative;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .autocomplete input {
@@ -11,6 +11,10 @@
   margin-top: 4px;
   border: 1px solid $default-border-color;
   border-radius: 6px;
+
+  &.error {
+    border-color: $warning-color;
+  }
 
   &:focus {
     border-color: $primary-box-shadow;
@@ -51,6 +55,7 @@
 }
 
 .error-message {
+  min-height: 16px;
   font-size: 0.8em;
   color: $warning-color;
 }

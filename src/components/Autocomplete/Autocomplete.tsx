@@ -61,6 +61,7 @@ function Autocomplete({ label, options, errorText, ...rest }: Props) {
         <input
           type="search"
           value={inputValue}
+          className={errorText ? styles.error : ''}
           onChange={handleInputChange}
           onFocus={() => setShowSuggestions(true)}
           onBlur={handleInputBlur}
@@ -68,7 +69,7 @@ function Autocomplete({ label, options, errorText, ...rest }: Props) {
           {...rest}
         />
       </label>
-      {errorText && <div className={styles['error-message']}>{errorText}</div>}
+      <div className={styles['error-message']}>{errorText}</div>
       {showSuggestions && (
         <ul className={styles.suggestions}>
           {suggestions.map((suggestion) => (

@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { ValidationError } from 'yup';
+import JSLogo from '@/assets/svg/js_logo.svg?react';
 import { useAppDispatch } from '@/app/store';
 import { GENDER } from '@/constants/common';
 import Button from '@/components/Button';
@@ -45,7 +46,10 @@ function SimpleForm() {
 
   return (
     <>
-      <h1>Simple Form</h1>
+      <div className={styles.header}>
+        <JSLogo className={styles.logo} />
+        <h1>Simple Form</h1>
+      </div>
       <form onSubmit={handleSubmit} className={styles.form} noValidate>
         <TextField label="Name" {...register('name')} />
         <TextField label="Age" type="number" min={0} {...register('age')} />
