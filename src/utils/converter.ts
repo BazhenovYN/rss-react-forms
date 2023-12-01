@@ -1,5 +1,5 @@
 import { schema } from '@/constants/validateSchema';
-import { IFormData } from '@/types';
+import { IForm, IFormData } from '@/types';
 
 function fileToBase64(file: File) {
   return new Promise<string>((resolve, reject) => {
@@ -21,18 +21,21 @@ export async function getStoredDataWithValidation(
   formData: FormData
 ): Promise<IFormData> {
   const data = Object.fromEntries(formData.entries());
-  console.log(data);
   const validatedResult = await schema.validate(data, {
     abortEarly: false,
   });
-  const avatarBase64 = await fileToBase64(validatedResult.avatar);
+  return getStoredData(validatedResult);
+}
+
+export async function getStoredData(data: IForm): Promise<IFormData> {
+  const avatarBase64 = await fileToBase64(data.avatar);
   return {
-    name: validatedResult.name,
-    age: validatedResult.age,
-    email: validatedResult.email,
-    password: validatedResult.password,
-    gender: validatedResult.gender,
-    country: validatedResult.country,
+    name: data.name,
+    age: data.age,
+    email: data.email,
+    password: data.password,
+    gender: data.gender,
+    country: data.country,
     avatar: avatarBase64,
   };
 }

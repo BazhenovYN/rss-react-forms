@@ -1,5 +1,7 @@
 import { Controller, useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useAppDispatch } from '@/app/store';
 import Logo from '@/assets/svg/react-hook-form.svg?react';
 import Autocomplete from '@/components/Autocomplete';
 import Button from '@/components/Button';
@@ -8,11 +10,16 @@ import CountrySelect from '@/components/CountrySelect';
 import TextField from '@/components/TextField';
 import { GENDER } from '@/constants/common';
 import { schema } from '@/constants/validateSchema';
+import { saveComplexFormData } from '@/store/historySlice';
 import { IForm } from '@/types';
+import { getStoredData } from '@/utils/converter';
 
 import styles from './ComplexForm.module.scss';
 
 function ComplexForm() {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   const {
     control,
     register,
@@ -23,8 +30,10 @@ function ComplexForm() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmitHandler = (data: IForm) => {
-    console.log({ data });
+  const onSubmitHandler = async (data: IForm) => {
+    const storedData = await getStoredData(data);
+    dispatch(saveComplexFormData(storedData));
+    navigate('/');
   };
 
   return (
@@ -107,6 +116,7 @@ function ComplexForm() {
         <Button type="submit" className={styles.submit}>
           Submit
         </Button>
+        <Link to="/">OK, I want to go back to the home page</Link>
       </form>
     </>
   );

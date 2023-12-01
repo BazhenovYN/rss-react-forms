@@ -1,19 +1,21 @@
 import { FormEvent, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ValidationError } from 'yup';
 import JSLogo from '@/assets/svg/js_logo.svg?react';
 import { useAppDispatch } from '@/app/store';
-import { GENDER } from '@/constants/common';
+import Autocomplete from '@/components/Autocomplete';
 import Button from '@/components/Button';
 import Checkbox from '@/components/Checkbox';
 import CountrySelect from '@/components/CountrySelect';
 import TextField from '@/components/TextField';
+import { GENDER } from '@/constants/common';
 import { saveSimpleFormData } from '@/store/historySlice';
 import { getStoredDataWithValidation } from '@/utils/converter';
-import Autocomplete from '@/components/Autocomplete';
 
 import styles from './SimpleForm.module.scss';
 
 function SimpleForm() {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -25,9 +27,9 @@ function SimpleForm() {
     try {
       const storedData = await getStoredDataWithValidation(formData);
       dispatch(saveSimpleFormData(storedData));
+      navigate('/');
     } catch (error) {
       if (error instanceof ValidationError) {
-        console.log(error.inner);
         error.inner.map(({ path, message }) => {
           path && setErrors((prev) => ({ ...prev, [path]: message }));
         });
@@ -46,10 +48,10 @@ function SimpleForm() {
 
   return (
     <>
-      <div className={styles.header}>
+      <h1>
         <JSLogo className={styles.logo} />
-        <h1>Simple Form</h1>
-      </div>
+        Simple Form
+      </h1>
       <form onSubmit={handleSubmit} className={styles.form} noValidate>
         <TextField label="Name" {...register('name')} />
         <TextField label="Age" type="number" min={0} {...register('age')} />
@@ -70,6 +72,7 @@ function SimpleForm() {
         <Button type="submit" className={styles.submit}>
           Submit
         </Button>
+        <Link to="/">OK, I want to go back to the home page</Link>
       </form>
     </>
   );

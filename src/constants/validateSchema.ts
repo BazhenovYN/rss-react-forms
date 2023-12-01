@@ -27,6 +27,7 @@ export const schema: ObjectSchema<IForm> = object({
     .required('Confirm password is required'),
   country: string().required('Country is required'),
   avatar: mixed<File>()
+    .transform((value) => (value instanceof FileList ? value[0] : value))
     .test(
       'fileSize',
       'File is too large',
