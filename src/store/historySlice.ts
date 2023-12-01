@@ -3,7 +3,7 @@ import { RootState } from '@/app/store';
 import { IFormData } from '@/types';
 
 interface Record {
-  creationDate: Date;
+  creationDate: string;
   formName: string;
   formData: IFormData;
 }
@@ -22,14 +22,14 @@ export const historySlice = createSlice({
   reducers: {
     saveSimpleFormData: (state, action: PayloadAction<IFormData>) => {
       state.records.push({
-        creationDate: new Date(),
+        creationDate: new Date().toJSON(),
         formName: 'simple',
         formData: action.payload,
       });
     },
     saveComplexFormData: (state, action: PayloadAction<IFormData>) => {
       state.records.push({
-        creationDate: new Date(),
+        creationDate: new Date().toJSON(),
         formName: 'complex',
         formData: action.payload,
       });
