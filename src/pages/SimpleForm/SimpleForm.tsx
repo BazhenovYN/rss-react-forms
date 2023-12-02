@@ -27,7 +27,7 @@ function SimpleForm() {
     try {
       const storedData = await getStoredDataWithValidation(formData);
       dispatch(saveSimpleFormData(storedData));
-      navigate('/');
+      navigate('/', { state: { IsNewData: true } });
     } catch (error) {
       if (error instanceof ValidationError) {
         error.inner.map(({ path, message }) => {

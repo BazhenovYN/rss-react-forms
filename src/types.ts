@@ -27,3 +27,10 @@ export interface IFormData {
   avatar: string;
   country: string;
 }
+
+export interface LogData {
+  id: number;
+  creationDate: string;
+  formName: string;
+  formData: IFormData;
+}

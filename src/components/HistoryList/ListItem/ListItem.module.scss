@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  min-width: 300px;
+  padding: 12px;
+  margin: 8px 0 24px;
+  border: 2px solid;
+  border-radius: 6px;
+
+  &.highlight {
+    animation: blink 0.5s 5;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: inline-flex;
+
+  & > div:nth-child(1) {
+    min-width: 5em;
+  }
+}
+
+.form {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  padding: 0 8px;
+  font-size: 0.75em;
+  background-color: white;
+}
+
+.date {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  padding: 0 8px;
+  font-size: 0.75em;
+  background-color: white;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: initial;
+  }
+
+  33%,
+  66% {
+    border: 2px solid #1fff00;
+  }
+}

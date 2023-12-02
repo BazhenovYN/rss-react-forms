@@ -33,7 +33,7 @@ function ComplexForm() {
   const onSubmitHandler = async (data: IForm) => {
     const storedData = await getStoredData(data);
     dispatch(saveComplexFormData(storedData));
-    navigate('/');
+    navigate('/', { state: { IsNewData: true } });
   };
 
   return (

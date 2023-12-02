@@ -1,15 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '@/app/store';
-import { IFormData } from '@/types';
-
-interface Record {
-  creationDate: string;
-  formName: string;
-  formData: IFormData;
-}
+import { IFormData, LogData } from '@/types';
 
 interface IHistoryState {
-  records: Record[];
+  records: LogData[];
 }
 
 const initialState: IHistoryState = {
@@ -22,6 +16,7 @@ export const historySlice = createSlice({
   reducers: {
     saveSimpleFormData: (state, action: PayloadAction<IFormData>) => {
       state.records.push({
+        id: state.records.length + 1,
         creationDate: new Date().toJSON(),
         formName: 'simple',
         formData: action.payload,
@@ -29,6 +24,7 @@ export const historySlice = createSlice({
     },
     saveComplexFormData: (state, action: PayloadAction<IFormData>) => {
       state.records.push({
+        id: state.records.length + 1,
         creationDate: new Date().toJSON(),
         formName: 'complex',
         formData: action.payload,
