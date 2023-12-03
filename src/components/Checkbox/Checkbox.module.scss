@@ -26,15 +26,15 @@
   left: 0;
   width: 20px;
   height: 20px;
-  background-color: #eeeeee;
+  background-color: $checkbox-color;
 }
 
 .container:hover input ~ .checkmark {
-  background-color: #cccccc;
+  background-color: $checkbox-hover-color;
 }
 
 .container input:checked ~ .checkmark {
-  background-color: #2196f3;
+  background-color: $primary-button-color;
 }
 
 .checkmark::after {
@@ -48,7 +48,7 @@
   left: 7px;
   width: 5px;
   height: 10px;
-  border: solid #ffffff;
+  border: solid $light-text-color;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
