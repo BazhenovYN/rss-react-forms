@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import styles from './Home.module.scss';
 import HistoryList from '@/components/HistoryList';
+
+import styles from './Home.module.scss';
 
 function Home() {
   return (

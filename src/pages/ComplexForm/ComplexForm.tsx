@@ -43,6 +43,9 @@ function ComplexForm() {
         <Logo className={styles.logo} />
         Complex Form
       </h1>
+      <div className={styles.hint}>
+        (created with the help of the React Hook Form)
+      </div>
       <form
         onSubmit={handleSubmit(onSubmitHandler)}
         className={styles.form}

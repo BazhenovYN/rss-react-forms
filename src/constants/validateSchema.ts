@@ -12,7 +12,9 @@ export const schema: ObjectSchema<IForm> = object({
     .positive('Age must be valid')
     .required('Age is required'),
   email: string().email('Enter a valid email').required('E-mail is required'),
-  gender: string<Gender>().oneOf(GENDER, 'Gender is required').required(),
+  gender: string<Gender>()
+    .oneOf(GENDER, 'Gender is required')
+    .required('Gender is required'),
   password: string()
     .matches(/[0-9]/, 'Password must have at least 1 digit character')
     .matches(/[a-z]/, 'Password must have at least 1 lowercase character')

@@ -40,7 +40,7 @@
   left: 12px;
   padding: 0 8px;
   font-size: 0.75em;
-  background-color: white;
+  background-color: #f8f8ff;
 }
 
 .date {
@@ -49,7 +49,7 @@
   right: 12px;
   padding: 0 8px;
   font-size: 0.75em;
-  background-color: white;
+  background-color: #f8f8ff;
 }
 
 @keyframes blink {
@@ -60,6 +60,6 @@
 
   33%,
   66% {
-    border: 2px solid #1fff00;
+    border: 2px solid #ff1493;
   }
 }

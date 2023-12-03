@@ -53,6 +53,7 @@ function SimpleForm() {
         <JSLogo className={styles.logo} />
         Simple Form
       </h1>
+      <div className={styles.hint}>(created without using React Hook Form)</div>
       <form onSubmit={handleSubmit} className={styles.form} noValidate>
         <TextField label="Name" {...register('name')} />
         <TextField label="Age" type="number" min={0} {...register('age')} />
