@@ -15,6 +15,7 @@ import { IForm } from '@/types';
 import { getStoredData } from '@/utils/converter';
 
 import styles from './ComplexForm.module.scss';
+import Password from '@/components/Password';
 
 function ComplexForm() {
   const navigate = useNavigate();
@@ -96,11 +97,17 @@ function ComplexForm() {
           {...register('avatar')}
           errorText={errors.avatar?.message}
         />
-        <TextField
-          label="Password"
-          type="password"
-          {...register('password')}
-          errorText={errors.password?.message}
+        <Controller
+          control={control}
+          name="password"
+          render={({ field }) => (
+            <Password
+              label="Password"
+              value={field.value}
+              onInputChange={field.onChange}
+              errorText={errors.password?.message}
+            />
+          )}
         />
         <TextField
           label="Confirm password"

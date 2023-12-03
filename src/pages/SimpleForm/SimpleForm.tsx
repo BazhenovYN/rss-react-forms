@@ -7,6 +7,7 @@ import Autocomplete from '@/components/Autocomplete';
 import Button from '@/components/Button';
 import Checkbox from '@/components/Checkbox';
 import CountrySelect from '@/components/CountrySelect';
+import Password from '@/components/Password';
 import TextField from '@/components/TextField';
 import { GENDER } from '@/constants/common';
 import { saveSimpleFormData } from '@/store/historySlice';
@@ -59,7 +60,7 @@ function SimpleForm() {
         <Autocomplete label="Gender" options={GENDER} {...register('gender')} />
         <CountrySelect label="Country" {...register('country')} />
         <TextField label="Avatar" type="file" {...register('avatar')} />
-        <TextField label="Password" type="password" {...register('password')} />
+        <Password label="Password" {...register('password')} />
         <TextField
           label="Confirm password"
           type="password"
