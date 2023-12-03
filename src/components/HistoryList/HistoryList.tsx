@@ -31,7 +31,9 @@ function HistoryList() {
           <p className={styles.placeholder}>
             History is empty...
             <br />
-            Select the input form and enter your data
+            Select the input form and enter your data.
+            <br />
+            It will be displayed here.
           </p>
         </>
       )}

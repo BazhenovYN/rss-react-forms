@@ -15,6 +15,7 @@ function ListItem({ data, highlight = false }: IProps) {
         .trimEnd()}
     >
       <div className={styles.content}>
+        <img src={formData.avatar} className={styles.avatar} />
         <div className={styles.item}>
           <div>Name:</div>
           <div>{formData.name}</div>
