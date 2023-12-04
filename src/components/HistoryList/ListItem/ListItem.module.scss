@@ -1,0 +1,67 @@
+@import '@/styles/variables';
+
+.container {
+  position: relative;
+  min-width: 300px;
+  padding: 12px;
+  margin: 8px 0 24px;
+  border: 2px solid;
+  border-radius: 6px;
+
+  &.highlight {
+    animation: blink 0.5s 5;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar {
+  align-self: center;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1em;
+  background-color: $dark-background-color;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.item {
+  display: inline-flex;
+
+  & > div:nth-child(1) {
+    min-width: 5em;
+  }
+}
+
+.form {
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  padding: 0 8px;
+  font-size: 0.75em;
+  background-color: $default-background-color;
+}
+
+.date {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  padding: 0 8px;
+  font-size: 0.75em;
+  background-color: $default-background-color;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    border-color: initial;
+  }
+
+  33%,
+  66% {
+    border: 2px solid $glow-color;
+  }
+}

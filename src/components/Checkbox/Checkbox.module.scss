@@ -1,0 +1,64 @@
+@import '@/styles/variables';
+
+.checkbox {
+  margin: 12px 0;
+}
+
+.container {
+  position: relative;
+  display: block;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: $checkbox-color;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: $checkbox-hover-color;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: $primary-button-color;
+}
+
+.checkmark::after {
+  position: absolute;
+  display: none;
+  content: '';
+}
+
+.container .checkmark::after {
+  top: 2px;
+  left: 7px;
+  width: 5px;
+  height: 10px;
+  border: solid $light-text-color;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.container input:checked ~ .checkmark::after {
+  display: block;
+}
+
+.error-message {
+  min-height: 16px;
+  font-size: 0.8em;
+  color: $warning-color;
+}
